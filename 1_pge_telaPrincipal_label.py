@@ -1,9 +1,12 @@
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By 
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 import time
+
+
 
 # Configurações básicas do Chrome
 chrome_options = Options()
@@ -14,6 +17,8 @@ service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
 # Acessa o site
+
+
 driver.get("https://homologacao-pje.app.tjpe.jus.br/h06-1g/home.seam")
 
 #driver.find_element(By.ID, "element_id")
@@ -57,6 +62,9 @@ assert elemento.text == "Solicitar nova senha"
 
 elemento = driver.find_element(By.XPATH, "//a[contains(text(), 'Saiba como obter o certificado digital')]")
 assert elemento.text == "Saiba como obter o certificado digital"
+
+
+time.sleep(2)
 
 time.sleep(1000)
 # Fecha o navegador (opcional)
