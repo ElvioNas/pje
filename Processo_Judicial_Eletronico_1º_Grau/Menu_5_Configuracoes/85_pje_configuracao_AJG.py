@@ -39,6 +39,15 @@ time.sleep(1)
 driver.find_element(By.XPATH, "//a[contains(text(), 'Configuração')]").click()
 time.sleep(2)
 driver.find_element(By.PARTIAL_LINK_TEXT, "AJG").click()
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Unidade Autenticadora')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Unidade de Trabalho')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Especialidades')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Profissão')]")
+time.sleep(1)
 
 #driver.find_element(
 #    By.XPATH,

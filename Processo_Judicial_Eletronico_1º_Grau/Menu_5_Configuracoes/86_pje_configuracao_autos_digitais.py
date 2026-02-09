@@ -39,10 +39,8 @@ time.sleep(1)
 driver.find_element(By.XPATH, "//a[contains(text(), 'Configuração')]").click()
 time.sleep(2)
 driver.find_element(By.PARTIAL_LINK_TEXT, "Autos Digitais").click()
-
-#driver.find_element(
-#    By.XPATH,
-#    "//a[contains(normalize-space(), 'Audiências e sessões')]"
-#).click()
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Link Personalizável')]")
+time.sleep(1)
 
 time.sleep(1000)

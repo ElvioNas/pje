@@ -31,13 +31,15 @@ time.sleep(2)
 driver.find_element(By.ID, "password").send_keys("tjpe1917")
 time.sleep(2)
 driver.find_element(By.ID, "kc-login").click()
-time.sleep(2)
+time.sleep(1)
 
 driver.find_element(By.CLASS_NAME, "botao-menu").click()
-time.sleep(2)
+time.sleep(1)
 driver.find_element(By.XPATH, "//a[contains(text(), 'Download')]").click()
-time.sleep(2)
+time.sleep(1)
 
 driver.find_element(By.XPATH, "//a[contains(text(), 'Área de download')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Área de download')]").click()
 time.sleep(1000)
 

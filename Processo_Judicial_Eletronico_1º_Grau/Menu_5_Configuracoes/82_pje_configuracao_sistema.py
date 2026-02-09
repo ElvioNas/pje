@@ -37,12 +37,22 @@ time.sleep(1)
 driver.find_element(By.CLASS_NAME, "botao-menu").click()
 time.sleep(1)
 driver.find_element(By.XPATH, "//a[contains(text(), 'Configuração')]").click()
-time.sleep(2)
+time.sleep(1)
 driver.find_element(By.PARTIAL_LINK_TEXT, "Sistema").click()
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Endereços WSDL')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Fluxo')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Localizações físicas')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Modelos de localização')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Parâmetro')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Formulários externos')]")
+time.sleep(1)
 
-#driver.find_element(
-#    By.XPATH,
-#    "//a[contains(normalize-space(), 'Audiências e sessões')]"
-#).click()
+
 
 time.sleep(1000)

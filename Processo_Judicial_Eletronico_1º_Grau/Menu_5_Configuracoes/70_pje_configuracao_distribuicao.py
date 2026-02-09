@@ -37,8 +37,14 @@ time.sleep(1)
 driver.find_element(By.CLASS_NAME, "botao-menu").click()
 time.sleep(1)
 driver.find_element(By.XPATH, "//a[contains(text(), 'Configuração')]").click()
-time.sleep(2)
+time.sleep(1)
 driver.find_element(By.PARTIAL_LINK_TEXT, "Distribuição").click()
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Distância máxima de distribuição')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Peso das partes no processo')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Peso de prevenção')]")
 
 #driver.find_element(
 #    By.XPATH,

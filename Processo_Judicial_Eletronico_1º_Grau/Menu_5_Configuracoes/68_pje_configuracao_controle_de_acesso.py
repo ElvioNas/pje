@@ -39,7 +39,14 @@ time.sleep(1)
 driver.find_element(By.XPATH, "//a[contains(text(), 'Configuração')]").click()
 time.sleep(2)
 driver.find_element(By.PARTIAL_LINK_TEXT, "Controle de acesso").click()
-
+time.sleep(2)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Papeis')]")
+time.sleep(2)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Funcionalidades')]")
+time.sleep(2)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Registro de atividades')]")
+time.sleep(2)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Registro de erros de certificados')]")
 #driver.find_element(
 #    By.XPATH,
 #    "//a[contains(normalize-space(), 'Audiências e sessões')]"

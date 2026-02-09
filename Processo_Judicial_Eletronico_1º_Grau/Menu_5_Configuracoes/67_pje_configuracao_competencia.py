@@ -40,6 +40,14 @@ driver.find_element(By.XPATH, "//a[contains(text(), 'Configuração')]").click()
 time.sleep(2)
 driver.find_element(By.PARTIAL_LINK_TEXT, "Competência").click()
 
+driver.find_element(By.XPATH, "//a[contains(text(), 'Competência')]")
+
+driver.find_element(By.XPATH, "//a[contains(text(), 'Dimensão funcional')]")
+
+driver.find_element(By.XPATH, "//a[contains(text(), 'Dimensão pessoal')]")
+
+driver.find_element(By.XPATH, "//a[contains(text(), 'Sigilo')]")
+
 #driver.find_element(
 #    By.XPATH,
 #    "//a[contains(normalize-space(), 'Audiências e sessões')]"

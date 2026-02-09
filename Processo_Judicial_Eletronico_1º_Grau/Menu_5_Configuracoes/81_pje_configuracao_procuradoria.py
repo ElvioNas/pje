@@ -37,8 +37,10 @@ time.sleep(1)
 driver.find_element(By.CLASS_NAME, "botao-menu").click()
 time.sleep(1)
 driver.find_element(By.XPATH, "//a[contains(text(), 'Configuração')]").click()
-time.sleep(2)
+time.sleep(1)
 driver.find_element(By.PARTIAL_LINK_TEXT, "Procuradoria").click()
+driver.find_element(By.XPATH, "//a[contains(text(), 'Contestação Padrão')]")
+time.sleep(1)
 
 #driver.find_element(
 #    By.XPATH,

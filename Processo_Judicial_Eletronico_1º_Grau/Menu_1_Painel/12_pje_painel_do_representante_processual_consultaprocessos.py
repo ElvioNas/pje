@@ -40,9 +40,6 @@ driver.find_element(By.XPATH, "//a[contains(text(), 'Painel')]").click()
 driver.find_element(By.PARTIAL_LINK_TEXT, "Painel do representante processual").click()
 driver.find_element(By.XPATH, "//td[contains(text(), 'Consulta processos')]").click()
 
-#driver.find_element(By.XPATH, "//th[contains(text(), 'Ações')]")
-#driver.find_element(By.CLASS_NAME,"//label[contains(text(), 'Nome do Representante')]")
-#driver.find_element(By.XPATH,"//label[normalize-space()='Nome da Parte']")
-#driver.find_element(By.XPATH, "//[contains(text(), 'Nome da Parte')]")
+
 
 time.sleep(1000)

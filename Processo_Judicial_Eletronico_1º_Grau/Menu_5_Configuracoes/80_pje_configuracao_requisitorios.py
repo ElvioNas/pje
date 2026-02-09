@@ -37,12 +37,34 @@ time.sleep(1)
 driver.find_element(By.CLASS_NAME, "botao-menu").click()
 time.sleep(1)
 driver.find_element(By.XPATH, "//a[contains(text(), 'Configuração')]").click()
-time.sleep(2)
+time.sleep(1)
 driver.find_element(By.PARTIAL_LINK_TEXT, "Requisitórios").click()
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Assuntos')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Alerta e Data de Bloqueio')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Base de Cálculo')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Disponibilizar Campos')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Liberar Impressão')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Motivo NM')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Requisitórios Reincluídos')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Salário Mínimo')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Simular Valor à Compensar')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Suspender Envio')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Credenciais')]")
+time.sleep(1)
 
-#driver.find_element(
-#    By.XPATH,
-#    "//a[contains(normalize-space(), 'Audiências e sessões')]"
-#).click()
+
+
+
 
 time.sleep(1000)
