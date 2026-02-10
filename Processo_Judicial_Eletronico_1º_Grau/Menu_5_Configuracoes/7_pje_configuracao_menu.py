@@ -58,6 +58,9 @@ driver.find_element(By.XPATH, "//a[contains(text(), 'Requisitórios')]")
 driver.find_element(By.XPATH, "//a[contains(text(), 'Procuradoria')]")
 driver.find_element(By.XPATH, "//a[contains(text(), 'Sistema')]")
 driver.find_element(By.XPATH, "//a[contains(text(), 'Tabelas básicas')]")
+driver.find_element(By.XPATH, "//a[contains(text(), 'Tabelas judiciais')]")
+driver.find_element(By.XPATH, "//a[contains(text(), 'AJG')]")
+driver.find_element(By.XPATH, "//a[contains(text(), 'Autos Digitais')]")
 
 
 time.sleep(1000)

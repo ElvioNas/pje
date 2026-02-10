@@ -69,6 +69,9 @@ time.sleep(1)
 driver.find_element(By.XPATH, "//a[contains(text(), 'Tipo de pena')]")
 time.sleep(1)
 driver.find_element(By.XPATH, "//a[contains(text(), 'Dispositivo da norma')]")
+time.sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(), 'Legislação Penal')]")
+
 
 time.sleep(1000)
 

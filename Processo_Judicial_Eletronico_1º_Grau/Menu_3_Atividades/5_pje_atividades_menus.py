@@ -16,14 +16,6 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 # Acessa o site
 driver.get("https://homologacao-pje.app.tjpe.jus.br/h06-1g/home.seam")
 
-#driver.find_element(By.ID, "element_id")
-#driver.find_element(By.NAME, "element_name")
-#driver.find_element(By.CLASS_NAME, "class_name")
-#driver.find_element(By.TAG_NAME, "tag")
-#driver.find_element(By.LINK_TEXT, "Texto do Link")
-#driver.find_element(By.PARTIAL_LINK_TEXT, "Parte do Texto")
-#driver.find_element(By.CSS_SELECTOR, "css.selector")
-#driver.find_element(By.XPATH, "//div[@id='example']")
 time.sleep(2)
 
 driver.find_element(By.ID, "username").send_keys("02112357417")
@@ -55,5 +47,7 @@ driver.find_element(By.XPATH, "//a[contains(text(), 'Requisição de antecipaç�
 driver.find_element(By.XPATH, "//a[contains(text(), 'Elaborar RPV ou precatório')]")
 driver.find_element(By.XPATH, "//a[contains(text(), 'Imprimir RPV e precatório')]")
 driver.find_element(By.XPATH, "//a[contains(text(), 'Simular valor a compensar')]")
+driver.find_element(By.XPATH, "//a[contains(text(), 'Solicitação de antecipação de pagamento de perícia')]")
+driver.find_element(By.XPATH, "//a[contains(text(), 'Baixar arquivo de contatos para o SPE Escritório')]")
 
 time.sleep(1000)
