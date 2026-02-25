@@ -5,16 +5,16 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 
-
 # ==============================
 # CONTADORES
 # ==============================
-
 contador = 0
 sucessos = 0
 falhas = 0
 
-
+# ==============================
+# FUNÇÃO CONTAR
+# ==============================
 def contar(by, valor, acao=None, texto=None):
     global contador, sucessos, falhas
     contador += 1
@@ -31,112 +31,62 @@ def contar(by, valor, acao=None, texto=None):
         print(f"[{contador}] ✔ OK -> {valor}")
         return elemento
     
-    except Exception:
+    except Exception as e:
         falhas += 1
         print(f"[{contador}] ✖ FALHOU -> {valor}")
         return None
 
 
 # ==============================
-# CONFIGURAÇÃO DO CHROME
+# CONFIGURAÇÕES DO CHROME
 # ==============================
-
 chrome_options = Options()
 chrome_options.add_argument("--start-maximized")
 
 service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
-
 # ==============================
 # ACESSA O SITE
 # ==============================
-
 driver.get("https://homologacao-pje.app.tjpe.jus.br/h06-1g/home.seam")
 
+time.sleep(2)
 
 # ==============================
 # LOGIN
 # ==============================
-
-time.sleep(1)
 contar(By.ID, "username", "send_keys", "02112357417")
-
 time.sleep(1)
+
 contar(By.ID, "password", "send_keys", "tjpe1917")
-
 time.sleep(1)
+
 contar(By.ID, "kc-login", "click")
-
-
-# ==============================
-# NAVEGAÇÃO
-# ==============================
-
 time.sleep(1)
+
+# ==============================
+# MENU PROCESSO
+# ==============================
 contar(By.CLASS_NAME, "botao-menu", "click")
-
 time.sleep(1)
-contar(By.XPATH, "//a[contains(text(), 'Configuração')]", "click")
 
-time.sleep(1)
-contar(By.PARTIAL_LINK_TEXT, "Pessoa", "click")
+contar(By.XPATH, "//a[contains(text(), 'Processo')]", "click")
+time.sleep(2)
 
-
-# ==============================
-# VERIFICAÇÕES
-# ==============================
-
-menus = [
-    "Advogado",
-    "Alteração de dados cadastrais",
-    "Ente ou autoridade",
-    "Assistentes de procuradoria/defensoria",
-    "Conciliador",
-    "Física",
-    "Jurídica",
-    "Jus Postulandi",
-    "Magistrado",
-    "Oficial de justiça",
-    "Perito",
-    "Procurador/Defensor",
-    "Servidor",
-    "Push",
-    "Qualificação",
-    "Tipo de pessoa"
-]
-
-for menu in menus:
-    time.sleep(1)
-    contar(By.XPATH, f"//a[contains(text(), '{menu}')]")
-
-
-# ==============================
-# CLICAR EM ADVOGADO
-# ==============================
-
-time.sleep(1)
-contar(By.XPATH, "//a[contains(text(), 'Advogado')]", "click")
-
-time.sleep(1)
-contar(By.XPATH, "//a[contains(text(), 'Atuação do advogado')]")
-
-time.sleep(1)
-contar(By.XPATH, "//a[contains(text(), 'Confirmar credenciamento')]")
-
+contar(By.PARTIAL_LINK_TEXT, "Nova liquidação e execução trabalhista", "click")
 
 # ==============================
 # RESULTADO FINAL
 # ==============================
-
 print("\n==============================")
-print(f"Total verificados : {contador}")
-print(f"Sucessos          : {sucessos}")
-print(f"Falhas            : {falhas}")
+print(f"Total de verificações : {contador}")
+print(f"Sucessos              : {sucessos}")
+print(f"Falhas                : {falhas}")
 
 if contador > 0:
     taxa = (sucessos / contador) * 100
-    print(f"Taxa de sucesso   : {taxa:.2f}%")
+    print(f"Taxa de sucesso       : {taxa:.2f}%")
 
 print("==============================")
 

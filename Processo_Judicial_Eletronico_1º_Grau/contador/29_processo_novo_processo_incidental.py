@@ -31,14 +31,14 @@ def contar(by, valor, acao=None, texto=None):
         print(f"[{contador}] ✔ OK -> {valor}")
         return elemento
     
-    except Exception:
+    except Exception as e:
         falhas += 1
         print(f"[{contador}] ✖ FALHOU -> {valor}")
         return None
 
 
 # ==============================
-# CONFIGURAÇÃO DO CHROME
+# CONFIGURAÇÕES DO CHROME
 # ==============================
 chrome_options = Options()
 chrome_options.add_argument("--start-maximized")
@@ -50,6 +50,7 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 # ACESSA O SITE
 # ==============================
 driver.get("https://homologacao-pje.app.tjpe.jus.br/h06-1g/home.seam")
+
 time.sleep(2)
 
 # ==============================
@@ -65,15 +66,15 @@ contar(By.ID, "kc-login", "click")
 time.sleep(1)
 
 # ==============================
-# NAVEGAÇÃO
+# MENU PROCESSO
 # ==============================
 contar(By.CLASS_NAME, "botao-menu", "click")
 time.sleep(1)
 
-contar(By.XPATH, "//a[contains(text(), 'Painel')]", "click")
+contar(By.XPATH, "//a[contains(text(), 'Processo')]", "click")
+time.sleep(2)
 
-contar(By.PARTIAL_LINK_TEXT, "Painel de julgamento", "click")
-time.sleep(1)
+contar(By.PARTIAL_LINK_TEXT, "Novo processo incidental", "click")
 
 # ==============================
 # RESULTADO FINAL
@@ -85,7 +86,7 @@ print(f"Falhas                : {falhas}")
 
 if contador > 0:
     taxa = (sucessos / contador) * 100
-    print(f"Taxa de sucesso      : {taxa:.2f}%")
+    print(f"Taxa de sucesso       : {taxa:.2f}%")
 
 print("==============================")
 

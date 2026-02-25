@@ -71,9 +71,9 @@ contar(By.CLASS_NAME, "botao-menu", "click")
 time.sleep(1)
 
 contar(By.XPATH, "//a[contains(text(), 'Painel')]", "click")
+time.sleep(2)
 
-contar(By.PARTIAL_LINK_TEXT, "Painel de julgamento", "click")
-time.sleep(1)
+contar(By.PARTIAL_LINK_TEXT, "Painel do perito", "click")
 
 # ==============================
 # RESULTADO FINAL
@@ -85,7 +85,7 @@ print(f"Falhas                : {falhas}")
 
 if contador > 0:
     taxa = (sucessos / contador) * 100
-    print(f"Taxa de sucesso      : {taxa:.2f}%")
+    print(f"Taxa de sucesso       : {taxa:.2f}%")
 
 print("==============================")
 

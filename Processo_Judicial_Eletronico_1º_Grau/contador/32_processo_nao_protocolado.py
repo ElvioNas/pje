@@ -15,30 +15,22 @@ falhas = 0
 # ==============================
 # FUNÇÃO CONTAR
 # ==============================
-def contar(by, valor, acao=None, texto=None):
+def contar(descricao, funcao):
     global contador, sucessos, falhas
     contador += 1
     
     try:
-        elemento = driver.find_element(by, valor)
-        
-        if acao == "click":
-            elemento.click()
-        elif acao == "send_keys":
-            elemento.send_keys(texto)
-        
+        funcao()
         sucessos += 1
-        print(f"[{contador}] ✔ OK -> {valor}")
-        return elemento
-    
-    except Exception:
+        print(f"[{contador}] ✔ OK -> {descricao}")
+    except Exception as e:
         falhas += 1
-        print(f"[{contador}] ✖ FALHOU -> {valor}")
-        return None
+        print(f"[{contador}] ✖ FALHOU -> {descricao}")
+        print(f"     Erro: {e}")
 
 
 # ==============================
-# CONFIGURAÇÃO DO CHROME
+# CONFIGURAÇÕES DO CHROME
 # ==============================
 chrome_options = Options()
 chrome_options.add_argument("--start-maximized")
@@ -55,37 +47,36 @@ time.sleep(2)
 # ==============================
 # LOGIN
 # ==============================
-contar(By.ID, "username", "send_keys", "02112357417")
+contar("Digite o usuário", lambda: driver.find_element(By.ID, "username").send_keys("02112357417"))
 time.sleep(1)
 
-contar(By.ID, "password", "send_keys", "tjpe1917")
+contar("Digite a senha", lambda: driver.find_element(By.ID, "password").send_keys("tjpe1917"))
 time.sleep(1)
 
-contar(By.ID, "kc-login", "click")
-time.sleep(1)
-
-# ==============================
-# NAVEGAÇÃO
-# ==============================
-contar(By.CLASS_NAME, "botao-menu", "click")
-time.sleep(1)
-
-contar(By.XPATH, "//a[contains(text(), 'Painel')]", "click")
-
-contar(By.PARTIAL_LINK_TEXT, "Painel de julgamento", "click")
+contar("Clique no botão login", lambda: driver.find_element(By.ID, "kc-login").click())
 time.sleep(1)
 
 # ==============================
-# RESULTADO FINAL
+# MENU
+# ==============================
+contar("Clique no menu principal", lambda: driver.find_element(By.CLASS_NAME, "botao-menu").click())
+time.sleep(1)
+
+contar("Clique em Processo", lambda: driver.find_element(By.XPATH, "//a[contains(text(), 'Processo')]").click())
+time.sleep(2)
+
+contar("Clique em Não protocolado", lambda: driver.find_element(By.PARTIAL_LINK_TEXT, "Não protocolado").click())
+
+# ==============================
+# RELATÓRIO FINAL
 # ==============================
 print("\n==============================")
-print(f"Total de verificações : {contador}")
-print(f"Sucessos              : {sucessos}")
-print(f"Falhas                : {falhas}")
+print(f"Total de etapas : {contador}")
+print(f"Sucessos        : {sucessos}")
+print(f"Falhas          : {falhas}")
 
 if contador > 0:
-    taxa = (sucessos / contador) * 100
-    print(f"Taxa de sucesso      : {taxa:.2f}%")
+    print(f"Taxa de sucesso : {(sucessos/contador)*100:.2f}%")
 
 print("==============================")
 

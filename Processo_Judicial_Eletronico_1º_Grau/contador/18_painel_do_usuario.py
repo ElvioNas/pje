@@ -5,31 +5,88 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 
-# Configurações básicas do Chrome
+# ==============================
+# CONTADORES
+# ==============================
+contador = 0
+sucessos = 0
+falhas = 0
+
+# ==============================
+# FUNÇÃO CONTAR
+# ==============================
+def contar(by, valor, acao=None, texto=None):
+    global contador, sucessos, falhas
+    contador += 1
+    
+    try:
+        elemento = driver.find_element(by, valor)
+        
+        if acao == "click":
+            elemento.click()
+        elif acao == "send_keys":
+            elemento.send_keys(texto)
+        
+        sucessos += 1
+        print(f"[{contador}] ✔ OK -> {valor}")
+        return elemento
+    
+    except Exception:
+        falhas += 1
+        print(f"[{contador}] ✖ FALHOU -> {valor}")
+        return None
+
+
+# ==============================
+# CONFIGURAÇÃO DO CHROME
+# ==============================
 chrome_options = Options()
 chrome_options.add_argument("--start-maximized")
 
-# Inicializa o driver
 service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
-# Acessa o site
+# ==============================
+# ACESSA O SITE
+# ==============================
 driver.get("https://homologacao-pje.app.tjpe.jus.br/h06-1g/home.seam")
-
-
 time.sleep(2)
 
-#Realizando Login no sistema#
+# ==============================
+# LOGIN
+# ==============================
+contar(By.ID, "username", "send_keys", "02112357417")
+time.sleep(1)
 
-driver.find_element(By.ID, "username").send_keys("02112357417")
+contar(By.ID, "password", "send_keys", "tjpe1917")
 time.sleep(1)
-driver.find_element(By.ID, "password").send_keys("tjpe1917")
+
+contar(By.ID, "kc-login", "click")
 time.sleep(1)
-driver.find_element(By.ID, "kc-login").click()
+
+# ==============================
+# MENU
+# ==============================
+contar(By.CLASS_NAME, "botao-menu", "click")
 time.sleep(1)
-driver.find_element(By.CLASS_NAME, "botao-menu").click()
-time.sleep(1)
-driver.find_element(By.XPATH, "//a[contains(text(), 'Painel')]").click()
-driver.find_element(By.PARTIAL_LINK_TEXT, "Painel do usuário").click()
+
+contar(By.XPATH, "//a[contains(text(), 'Painel')]", "click")
+
+contar(By.PARTIAL_LINK_TEXT, "Painel do usuário")
+
+# ==============================
+# RESULTADO FINAL
+# ==============================
+
+print("\n==============================")
+print(f"Total de verificações : {contador}")
+print(f"Sucessos              : {sucessos}")
+print(f"Falhas                : {falhas}")
+
+if contador > 0:
+    taxa = (sucessos / contador) * 100
+    print(f"Taxa de sucesso      : {taxa:.2f}%")
+
+print("==============================")
 
 time.sleep(1000)
