@@ -17,7 +17,7 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 driver.get("https://homologacao-pje.app.tjpe.jus.br/h06-1g/home.seam")
 
 time.sleep(2)
-
+# 
 driver.find_element(By.ID, "username").send_keys("02112357417")
 time.sleep(2)
 driver.find_element(By.ID, "password").send_keys("tjpe1917")
